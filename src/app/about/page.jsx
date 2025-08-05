@@ -1,11 +1,23 @@
+import AboutHero from '@/components/about-components/AboutHero'
+import AboutMission from '@/components/about-components/AboutMission'
+import AboutOrders from '@/components/about-components/AboutOrders'
+import AboutProducts from '@/components/about-components/AboutProducts'
+import AboutReviews from '@/components/about-components/AboutReviews'
+import AboutStory from '@/components/about-components/AboutStory'
 import React from 'react'
 
-const page = () => {
+const Aboutpage = () => {
   return (
-    <div>
-      About
-    </div>
+   <>
+   <AboutHero/>
+   <AboutStory/>
+   <AboutMission/>
+   <AboutProducts/>
+   <AboutReviews/>
+   <AboutOrders/>
+   
+   </>
   )
 }
 
-export default page
+export default Aboutpage
