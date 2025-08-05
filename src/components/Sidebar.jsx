@@ -8,7 +8,9 @@ import {
   SquareKanban,
   Users,
 } from "lucide-react";
+import Link from "next/link";
 import React, { useState } from "react";
+
 
 const Sidebar = () => {
   const links = [
@@ -38,13 +40,13 @@ const Sidebar = () => {
 
       <div className={`flex flex-col gap-5 p-5`}>
         {links.map((v, i) => (
-          <div
+          <Link href={v.route}
             className={`border rounded-lg flex p-2 gap-3 overflow-hidden`}
             key={i}
           >
             <div>{v.icon}</div>
             <div className={`${sideOpen ? "block" : "hidden"}`}>{v.lable}</div>
-          </div>
+          </Link>
         ))}
       </div>
       <button
