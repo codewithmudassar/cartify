@@ -3,14 +3,14 @@ import AboutMission from '@/components/about-components/AboutMission'
 import AboutOrders from '@/components/about-components/AboutOrders'
 import AboutProducts from '@/components/about-components/AboutProducts'
 import AboutReviews from '@/components/about-components/AboutReviews'
-import AboutStory from '@/components/about-components/AboutStory'
+import OurStory from '@/components/about-components/OurStory'
 import React from 'react'
 
 const Aboutpage = () => {
   return (
    <>
    <AboutHero/>
-   <AboutStory/>
+   <OurStory/>
    <AboutMission/>
    <AboutProducts/>
    <AboutReviews/>
