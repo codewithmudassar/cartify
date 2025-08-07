@@ -53,7 +53,7 @@ const page = () => {
         </section>
       );
     };
-    
+
    
 
 export default page
