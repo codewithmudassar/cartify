@@ -5,7 +5,7 @@ const dbConnect= async()=>{
       return;
     }
     try {
-        await mongoose.connect("mongodb+srv://root:root@cluster0.mjjgsmt.mongodb.net/cartify")
+        await mongoose.connect(process.env.md)
         console.log("db connect");
     } catch (error) {
         console.error(error)
