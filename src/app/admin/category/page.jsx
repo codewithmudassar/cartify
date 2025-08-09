@@ -62,7 +62,7 @@ const DatePage = () => {
           <p>{today}</p>
         </div>
 
-        <Link href="/admin/categories/form">
+        <Link href="/admin/category/form">
           <p className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded text-sm hover:bg-blue-400 cursor-pointer">
             <Plus className="w-4 h-4" />
             <span>Create Category</span>
