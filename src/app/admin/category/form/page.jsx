@@ -30,7 +30,6 @@ const router = useRouter()
      }
   return (
     <>
-    <Toaster/>
     <div className='w-full h-[70vh] flex items-center justify-center'>
       <form onSubmit={handleSubmit} className='w-1/3 bg-white p-5 rounded-lg shadow-lg'>
         <h1 className='text-2xl font-bold mb-4'>Create Category</h1>
