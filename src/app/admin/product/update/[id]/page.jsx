@@ -4,9 +4,11 @@ import { X } from 'lucide-react';
 import { CldUploadWidget } from 'next-cloudinary';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
-const page = () => {
+const page = ({params}) => {
+  const {id} = params
+  console.log(id)
 const router = useRouter()
       const [formData, setFormData] = useState({
         title:"",
@@ -28,8 +30,24 @@ const router = useRouter()
         } 
       };
     
+      const singleProduct = async () => {
+        try {
+          const res = await axios.get(`/api/product/${id}`)
+
+          console.log(res)
+          if(res.data.success){
+            setFormData(res.data.single)
+            setTempImages(res.data.single.images)
+          }
+        } catch (error) {
+          toast.error("falid to fetch previous data")
+          console.log(error)
+        }
+      }
+    
       useEffect(() => {
         catFetch();
+        singleProduct()
       }, []);
 
     const [tempImages, setTempImages] = useState([]);
@@ -46,7 +64,7 @@ const router = useRouter()
                 try {
                     
                     setLoading(true);
-                    const res = await axios.post("/api/product",{
+                    const res = await axios.put(`/api/product/${id}`,{
                         ...formData,
                         images:tempImages
                     })
@@ -83,6 +101,7 @@ const router = useRouter()
                 name="title"
                 placeholder="Name"
                 onChange={handleChange}
+                value={formData.title}
                 required
                 shadow
                 sizing="lg"
@@ -96,6 +115,7 @@ const router = useRouter()
                 name="stock"
                 placeholder="Stock"
                 onChange={handleChange}
+                value={formData.stock}
                 required
                 shadow
                 sizing="lg"
@@ -107,6 +127,7 @@ const router = useRouter()
                 id="category"
                 name="category"
                 onChange={handleChange}
+                value={formData.category}
                 required
                 sizing="lg"
               >
@@ -125,6 +146,7 @@ const router = useRouter()
                 type="number"
                 name="price"
                 placeholder="Price"
+                value={formData.price}
                 onChange={handleChange}
                 required
                 shadow
@@ -138,9 +160,10 @@ const router = useRouter()
                 name="desc"
                 placeholder="Description"
                 onChange={handleChange}
-                className='w-full'
+                value={formData.desc}
                 required
                 rows={4}
+                className='w-full'
                 shadow
               />
             </div>
@@ -199,7 +222,7 @@ const router = useRouter()
               disabled={loading}
             >
               {loading ? "loading..." : null}
-              {loading ? "Submitting..." : "Add Product"}
+              {loading ? "Submitting..." : "Update Product"}
             </button>
           </form>
         </div>

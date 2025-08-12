@@ -84,7 +84,25 @@ const Page = () => {
     currentPage * itemsPerPage
   );
 
-  console.log(categories)
+  // console.log(categories)
+
+  const handleDelete = async (id)=>{
+    const confirm = window.confirm("Are you sure to delete this product")
+    if(!confirm){
+      return
+    }
+    try {
+      
+      const res = await axios.delete(`/api/product/${id}`)
+      console.log(res)
+      if(res.data.success){
+        toast.success("product delete successfully")
+        getProducts()
+      }
+    } catch (error) {
+      
+    }
+  }
 
 
   return (
@@ -169,12 +187,13 @@ const Page = () => {
                 <td className="px-9 py-4">
                   <div className="flex items-center gap-4">
                     <button
+                    onClick={()=> handleDelete(v._id)}
                       className="text-red-500 hover:text-red-700"
                     >
                       <Trash2Icon />
                     </button>
                     <Link
-                      href={`/admin/products/${v._id}`}
+                      href={`/admin/product/update/${v._id}`}
                       className="text-blue-500 hover:underline"
                     >
                       <SquarePen />
