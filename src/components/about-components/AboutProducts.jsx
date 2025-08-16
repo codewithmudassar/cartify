@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 const products = [
   {
@@ -44,9 +45,13 @@ const AboutProduct = () => {
         </p>
 
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <div
+          {products.map((product,i) => (
+            <motion.div
+            initial={{y:50,opacity:0}}
+          viewport={{once:true}}
+           whileInView={{y:0,opacity:1}} transition={{duration:1,delay: i * 0.1}}
               key={product.id}
+              
               className="bg-white border border-blue-400 rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden group"
             >
               <img
@@ -58,7 +63,7 @@ const AboutProduct = () => {
                 <h3 className="text-xl font-semibold text-blue-800 mb-2">{product.name}</h3>
                 <p className="text-blue-600 text-sm">{product.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
