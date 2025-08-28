@@ -6,10 +6,10 @@ const dbConnect= async()=>{
     }
     try {
         await mongoose.connect(process.env.md)
-        console.log("db connect");
+        console.log("db connect"); 
     } catch (error) {
         console.error(error)
-    }
+    } 
     
 }
 
