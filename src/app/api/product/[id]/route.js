@@ -24,7 +24,7 @@ export async function DELETE(req,{params}) {
 export async function GET(req,{params}) {
     await dbConnect()
     try {
-        const {id}= params
+        const id= params.id
         const single = await Product.findById(id)
          return NextResponse.json(
                     {single,success:true},

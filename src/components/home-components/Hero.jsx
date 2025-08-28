@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <div>
       
-      <section className='flex items-start h[450px] justify-start text-left px-25 py-35 mb-5'>
+      <section className='flex items-start h[450px] justify-start text-left px-25 py-35 mb-5 '>
         <div className='absolute inset-0'>
           <img
             src='/images/hero.jpg' 

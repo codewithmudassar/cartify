@@ -1,15 +1,17 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React from "react";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import Dnav from "./Dnav";
+import { AuthProvider } from "@/context/AuthContext";
+import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
   const pathname = usePathname();
   return (
-    <>
+    <AuthProvider>
+      <>
       {pathname.startsWith("/admin") ? (
         <>
           <div className="flex h-screen">
@@ -29,7 +31,8 @@ const Layout = ({ children }) => {
           <Footer />
         </>
       )}
-    </>
+      </>
+    </AuthProvider>
   );
 };
 
